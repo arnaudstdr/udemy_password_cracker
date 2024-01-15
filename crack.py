@@ -59,7 +59,10 @@ def crack_en_ligne(md5):
     except urllib.error.URLError as e:
         print("Erreur d'URL : " + e.reason)
 
-    print(reponse.read())
+    if "Aucun document" in str(reponse.read()):
+        print("[-] HASH NON TROUVE VIA GOOGLE")
+    else:
+        print("[+] MOT DE PASSE TROUVE VIA GOOGLE : " + url)
 
 def display_name():
     print("Durée : " + str(time.time() - debut) + "secondes")
